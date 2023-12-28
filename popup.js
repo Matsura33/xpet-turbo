@@ -1,16 +1,18 @@
 function injectContent(){
-    const placeHolder = document.querySelectorAll('.css-z1vtgz');
-    const placeHolderBerries = document.querySelectorAll('.css-16073o4');
+    if(!document.querySelector('.berryRenderContainer')){
+        const placeHolder = document.querySelectorAll('.css-z1vtgz');
+        const placeHolderBerries = document.querySelectorAll('.css-16073o4');
 
-    const berryRender = document.createElement('span');
-    berryRender.className = 'berryRenderContainer';
-    placeHolderBerries[0].insertAdjacentElement('afterbegin', berryRender);
+        const berryRender = document.createElement('span');
+        berryRender.className = 'berryRenderContainer';
+        placeHolderBerries[0].insertAdjacentElement('afterbegin', berryRender);
 
-    const resultElement = document.createElement('p');
-    resultElement.textContent = 'Calculating...';
-    resultElement.className = 'MuiTypography-root MuiTypography-body1 css-16073o4';
+        const resultElement = document.createElement('p');
+        resultElement.textContent = 'Calculating...';
+        resultElement.className = 'MuiTypography-root MuiTypography-body1 css-16073o4 tokenRender';
 
-    placeHolder[1].insertAdjacentElement('afterend', resultElement);
+        placeHolder[1].insertAdjacentElement('afterend', resultElement);
+    }
 
     function loopData() {
         const elementsWithClass = document.querySelectorAll('.css-1oh2wm');
@@ -62,7 +64,7 @@ function injectContent(){
       
               document.querySelector('.berryRenderContainer').textContent = resultBerry+'/h ';
       
-              resultElement.textContent = `${resultToken}/h (${displayBpetValue})`;
+              document.querySelector('.tokenRender').textContent = `${resultToken}/h (${displayBpetValue})`;
     
             }, 800);
           };
